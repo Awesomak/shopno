@@ -1,0 +1,52 @@
+	$(document).ready(function() {
+		$('.next').click(function() {
+			var currImg = $('.img.curry');
+			var currImgIndex = $('.img.curry').index();
+			var nextImgIndex = currImgIndex + 1;
+			var nextNextImgIndex = currImgIndex + 2;
+			var nextImg = $('.img').eq(nextImgIndex);
+			var nextNextImg = $('.img img').eq(nextNextImgIndex).attr('src');
+			var prevNextImg = $('.img img').eq(currImgIndex).attr('src');
+
+			currImg.fadeOut(100);
+			currImg.removeClass('curry');
+
+			if (nextImgIndex == ($('.img:last').index()	+ 1)) {
+				nextNextImg = $('.img img').eq(1).attr('src');
+				$('.img').eq(0).fadeIn(100);
+				$('.img').eq(0).addClass('curry');
+			} else {
+				nextImg.fadeIn(100);
+				nextImg.addClass('curry');
+			}
+
+			if (nextImgIndex == ($('.img:last').index())) {
+				nextNextImg = $('.img img').eq(0).attr('src');
+			}
+
+			$('.next img').attr('src',nextNextImg);
+			$('.prev img').attr('src',prevNextImg);
+			
+		});
+
+		$('.prev').click(function() {
+			var currImg = $('.img.curry');
+			var currImgIndex = $('.img.curry').index();
+			var prevImgIndex = currImgIndex - 1;
+			var prevNextImgIndex = currImgIndex - 2;
+			var prevImg = $('.img').eq(prevImgIndex);
+			var nextNextImg = $('.img img').eq(prevNextImgIndex).attr('src');
+			var prevNextImg = $('.img img').eq(currImgIndex).attr('src');
+
+			$('.next img').attr('src',nextNextImg);
+			$('.prev img').attr('src',prevNextImg);
+
+			currImg.fadeOut(100);
+			currImg.removeClass('curry');
+			prevImg.fadeIn(100);
+			prevImg.addClass('curry');
+		});
+	})
+
+		//$('.curry').animate({'height':'400px'},2000);
+		//$('.curry').animate({'width':'100px'},2000);

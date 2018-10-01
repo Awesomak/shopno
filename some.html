@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="style1.css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+	<script src="js/script.js"></script>
+	<script src="js/jquery.min.js"></script>
+</head>
+<body>
+	<div class="col-md-6 sl">
+		<div class="slider">
+			<div class="img curry"><img src="img/slider-img.png"alt=""></div>
+			<div class="img next"><img src="img/slider-img1.jpg" alt=""></div>
+			<div class="img pprev"><img src="img/slider-img2.jpg"alt=""></div>
+			<div class="img prev"><img src="img/slider-img3.jpg"alt=""></div>
+			<div class="switch">
+				<span class="sw active"></span>
+				<span class="sw" ></span>
+				<span class="sw" ></span>
+				<span class="sw" ></span>
+			</div>
+		</div>
+	</div>
+	<script>
+
+	var ci = 0;
+
+	$('.img').click(function() {
+		if($(this).attr('class') === $('.img.next').attr('class')) {
+			ci = $('.img.curry').index();
+			var curry = $('.img.curry');
+			var prev = $('.img.prev');
+			var pprev = $('.img.pprev');
+			var next = $('.img.next');
+
+			pprev.css('z-index','1').animate({
+				left:'110px',
+				top:'42px',
+				height:'400px',
+				width:'390px'
+			}, 800, function() {
+				pprev.removeClass('pprev');
+				pprev.addClass('next');
+			})
+
+			curry.css('z-index','2').animate({
+				left:'0px',
+				top:'42px',
+				height:'400px'
+			}, 800, function() {
+				curry.removeClass('curry');
+				curry.addClass('prev');
+			})
+
+			prev.css('z-index','0').animate({
+				top:'90px',
+				left:'90',
+				height:'360px',
+				width:'320px'
+			}, 800, function() {
+				prev.removeClass('prev');
+				prev.addClass('pprev');
+			})
+
+			next.animate({
+				left:'75px',
+				top:'20px',
+				height:'463px',
+				width:'380px'
+			}, 400, function() {
+				next.removeClass('next');
+				next.addClass('curry');
+			}).css('z-index','3').animate({
+				left:'55px',
+				top:'0px',
+				height:'483px',
+				width:'390px'
+			}, 400)
+
+			switchCheck(ci+=1);
+		}
+
+		if($(this).attr('class') === $('.img.prev').attr('class')) {
+			ci = $('.img.curry').index();
+			var curry = $('.img.curry');
+			var prev = $('.img.prev');
+			var pprev = $('.img.pprev');
+			var next = $('.img.next');
+
+			pprev.css('z-index','1').animate({
+				left:'0px',
+				top:'42px',
+				height:'400px'
+			}, 800, function() {
+				pprev.removeClass('pprev');
+				pprev.addClass('prev');
+			})
+
+			curry.css('z-index','2').animate({
+				left:'110px',
+				top:'42px',
+				height:'400px'
+			}, 800, function() {
+				curry.removeClass('curry');
+				curry.addClass('next');
+			})
+
+			next.css('z-index','0').animate({
+				top:'90px',
+				left:'90',
+				height:'360px',
+				width:'320px'
+			}, 800, function() {
+				next.removeClass('next');
+				next.addClass('pprev');
+			})
+
+			prev.animate({
+				left:'35px',
+				top:'20px',
+				height:'463px',
+				width:'380px'
+			}, 400, function() {
+				prev.removeClass('prev');
+				prev.addClass('curry');
+			}).animate({
+				left:'55px',
+				top:'0px',
+				height:'483px',
+				width:'390px'
+			}, 400).css('z-index','3')
+
+			switchCheck(ci-=1);
+		}
+		});
+
+		var switchCheck = function(a) {
+		console.log(a);
+		var mis = $('.sw').eq(3);
+
+		$('.sw').each(function() {
+			$(this).removeClass('active');
+				if($(this).index() == a%4) {
+					console.log($(this).index());
+					$(this).addClass('active')
+				} 
+				if (a == -1) {
+					mis.addClass('active')
+				}
+			})
+		}
+	</script>
+</body>
+</html>

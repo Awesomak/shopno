@@ -114,50 +114,81 @@ section {
 }
 
 .sl {
-	display: flex;
 	padding: 30px 0 30px 50px;
 }
 
-.n {
-	width: 50px;
-	height: 400px;
-	background: #eeeff1;
-}
-
 .prev {
-	position: relative;
-	left: 7px;
-	top: 45px;
+	left: 0;
+	top: 42px;
+	height: 400px;
+	width: 390px;
+	position: absolute;
 	z-index: 1;
 }
 
 .next {
-	position: relative;
-	right: 345px;
-	top: 45px;
+	right: 0;
+	top: 42px;
+	height: 400px;
+	width: 390px;
+	position: absolute;
 	z-index: 1;
 }
 
-.prev img, .next img {
-	height: 400px
+.pprev {
+	left: 90px;
+	top: 90px;
+	height: 360px;
+	width: 320px;
+	position: absolute;
+	z-index: 0;
+}
+
+.curry {
+	height: 483px;
+	width: 390px;
+	left: 55px;
+	top: 0;
+	position: absolute;
+	z-index: 3;
+}
+
+.curry img, .prev img, .next img, .pprev img  {
+	height: 100%;
+	width: 100%;
+}
+
+.curry, .prev, .next, .pprev {
+	box-shadow: 0px 0px 31px 0px rgba(0,0,0,0.75);
 }
 
 .slider {
-	width: 390px;
-	height: 483px;
+	display: flex;
+	width: 500px;
+	height: 540px;
 	position: relative;
 	top: 0;
 	left: 0;
 	right: 0;
-	z-index: 2;
 }
 
-.img {
-	width: 390px;
-	height: 483px;
-	display: none;
+.switch {
+	position: absolute;
+	left: 226px;
+	display: flex;
+	bottom: 0;
+	height: 20px;
 }
 
-.img.curry {
-	display: block;
+.switch > span {
+	width: 11px;
+	height: 11px;
+	border-radius: 5px;
+	background: #d0d0d0;
+	margin: 0 1px;
 }
+
+span.active {
+	background: #71f6eb;
+}
+
