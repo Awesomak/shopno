@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="style.css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+	<script src="js/script.js"></script>
+	<script src="js/jquery.min.js"></script>
+</head>
+<body>
+	<header>
+		<div class="container">
+			<div class="menu">
+				<div class="row">
+					<div class="col-sm-2">
+						<a href="#" class="navbar-logo">sh<span>o</span>pno</a>
+					</div>
+					<div class="col-sm-offset-9 col-sm-1">
+						<div class="toggle-menu">
+							<span class="glyphicon glyphicon-menu-hamburger"></span>
+						</div>
+					</div>
+				</div>
+				<div class="menu-nav">
+					<ul class="menu-ul">
+						<li><a href="">about us</a></li>
+						<li><a href="">featured works</a></li>
+						<li><a href="">our services</a></li>
+						<li><a href="">small team</a></li>
+						<li><a href="">what they says</a></li>
+					</ul>
+				</div>
+				<div class="header-main">
+					<p class="text-main">say hello to <span>shopno!</span><br><span>agency</span> corporate shopno theme</p>
+					<button class="btn-main">contact us</button>
+				</div>
+			</div>
+		</div>
+	</header>
+	<script>
+	$('.toggle-menu').click(function() {
+		$('.menu-nav').toggle(100);
+	})
+	</script>
+</body>
+</html>
