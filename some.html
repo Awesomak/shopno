@@ -12,10 +12,11 @@
 <body>
 	<div class="col-md-6 sl">
 		<div class="slider">
-			<div class="img curry"><img src="img/slider-img.png"alt=""></div>
+			<div class="img curry"><img src="img/slider-img.png" alt=""></div>
 			<div class="img next"><img src="img/slider-img1.jpg" alt=""></div>
-			<div class="img pprev"><img src="img/slider-img2.jpg"alt=""></div>
-			<div class="img prev"><img src="img/slider-img3.jpg"alt=""></div>
+			<div class="img pprev"><img src="img/slider-img2.jpg" alt=""></div>
+			<div class="img prev"><img src="img/slider-img3.jpg" alt=""></div>
+			<div class="img other"><img src="img/slider-img3.jpg" alt=""></div>
 			<div class="switch">
 				<span class="sw active"></span>
 				<span class="sw" ></span>
@@ -35,50 +36,70 @@
 			var prev = $('.img.prev');
 			var pprev = $('.img.pprev');
 			var next = $('.img.next');
+			var col = $('.img').length;
+			var curryIndex = curry.index();
+			var curryWasi = curryIndex + 1; var curryWasii = (curryWasi % col)-1; var curryWas = $('.img').eq(curryWasii);
+			var prevIndex = prev.index();
+			var prevWasi = prevIndex + 1; var prevWasii = (prevWasi % col)-1; var prevWas = $('.img').eq(prevWasii);
+			var pprevIndex = pprev.index();
+			var pprevWasi = pprevIndex + 1; var pprevWasii = (pprevWasi % col)-1; var pprevWas = $('.img').eq(pprevWasii);
+			var nextIndex = next.index();
+			var nextWasi = nextIndex -1; var nextWasii = (nextWasi % col)-1; var nextWas = $('.img').eq(nextWasii);
+
+			$('.img').each(function() {
+				$(this).removeClass('other');
+			})
+
+			$('.img').each(function() {
+				if ($(this).index() != curryWasii && $(this).index() != nextWasii && $(this).index() != prevWasii && $(this).index() != pprevWasii) {
+					$(this).addClass('other');
+				}
+			})
+
+			console.log(curryIndex);
+			console.log(prevIndex);
+			console.log(pprevIndex);
+			console.log(nextIndex);
 
 			pprev.css('z-index','1').animate({
-				left:'110px',
-				top:'42px',
-				height:'400px',
-				width:'390px'
+				left:'30%',
+				top:'8%',
+				height:'73%',
+				width:'70%'
 			}, 800, function() {
 				pprev.removeClass('pprev');
-				pprev.addClass('next');
+				pprevWas.addClass('next');
 			})
 
 			curry.css('z-index','2').animate({
-				left:'0px',
-				top:'42px',
-				height:'400px'
+				left:'0',
+				top:'8%',
+				height:'73%',
+				width:'70%'
 			}, 800, function() {
 				curry.removeClass('curry');
-				curry.addClass('prev');
+				curryWas.addClass('prev');
 			})
 
 			prev.css('z-index','0').animate({
-				top:'90px',
-				left:'90',
-				height:'360px',
-				width:'320px'
+				top:'18%',
+				left:'12%',
+				height:'56%',
+				width:'70%'
 			}, 800, function() {
 				prev.removeClass('prev');
-				prev.addClass('pprev');
+				prevWas.addClass('pprev');
 			})
 
 			next.animate({
-				left:'75px',
-				top:'20px',
-				height:'463px',
-				width:'380px'
-			}, 400, function() {
+				left:'11%',
+				top:'0',
+				height:'88%',
+				width:'77%'
+			}, 800, function() {
 				next.removeClass('next');
-				next.addClass('curry');
-			}).css('z-index','3').animate({
-				left:'55px',
-				top:'0px',
-				height:'483px',
-				width:'390px'
-			}, 400)
+				nextWas.addClass('curry');
+			}).css('z-index','3')
 
 			switchCheck(ci+=1);
 		}
@@ -91,60 +112,55 @@
 			var next = $('.img.next');
 
 			pprev.css('z-index','1').animate({
-				left:'0px',
-				top:'42px',
-				height:'400px'
+				left:'0',
+				top:'8%',
+				height:'73%',
+				width:'70%'
 			}, 800, function() {
 				pprev.removeClass('pprev');
 				pprev.addClass('prev');
 			})
 
 			curry.css('z-index','2').animate({
-				left:'110px',
-				top:'42px',
-				height:'400px'
+				left:'30%',
+				top:'8%',
+				height:'73%',
+				width:'70%'
 			}, 800, function() {
 				curry.removeClass('curry');
 				curry.addClass('next');
 			})
 
 			next.css('z-index','0').animate({
-				top:'90px',
-				left:'90',
-				height:'360px',
-				width:'320px'
+				top:'18%',
+				left:'12%',
+				height:'56%',
+				width:'70%'
 			}, 800, function() {
 				next.removeClass('next');
 				next.addClass('pprev');
 			})
 
 			prev.animate({
-				left:'35px',
-				top:'20px',
-				height:'463px',
-				width:'380px'
-			}, 400, function() {
+				left:'11%',
+				top:'0',
+				height:'88%',
+				width:'77%'
+			}, 800, function() {
 				prev.removeClass('prev');
 				prev.addClass('curry');
-			}).animate({
-				left:'55px',
-				top:'0px',
-				height:'483px',
-				width:'390px'
-			}, 400).css('z-index','3')
+			}).css('z-index','3')
 
 			switchCheck(ci-=1);
 		}
 		});
 
 		var switchCheck = function(a) {
-		console.log(a);
 		var mis = $('.sw').eq(3);
 
 		$('.sw').each(function() {
 			$(this).removeClass('active');
 				if($(this).index() == a%4) {
-					console.log($(this).index());
 					$(this).addClass('active')
 				} 
 				if (a == -1) {
