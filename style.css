@@ -31,6 +31,7 @@ header {
 
 .toggle-menu > span {
 	font-size: 21px;
+	float: right;
 }
 
 .menu-nav {
@@ -39,7 +40,12 @@ header {
 	border-bottom: 1px solid #474747;
 }
 
+.menu-ul {
+	padding: 0;
+}
+
 .menu-ul > li {
+	text-align: center;
 	display: inline-block;
 	width: 19.7%;
 }
